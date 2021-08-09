@@ -17,21 +17,21 @@
 int main(void)
 {
     // Verify pointers are not null
-    assert(PROJECT_NAME);
-    assert(PROJECT_VERSION);
-    assert(PROJECT_REVISION);
-    assert(PROJECT_COMPILER);
-    assert(PROJECT_COMPILER_VERSION);
+    assert(kProjectName);
+    assert(kProjectVersion);
+    assert(kProjectRevision);
+    assert(kProjectCompiler);
+    assert(kProjectCompilerVersion);
 
     // Verify contents are not empty
-    assert(strlen(PROJECT_NAME));
-    assert(strlen(PROJECT_VERSION));
-    assert(strlen(PROJECT_REVISION));
-    assert(strlen(PROJECT_COMPILER));
-    assert(strlen(PROJECT_COMPILER_VERSION));
+    assert(strlen(kProjectName));
+    assert(strlen(kProjectVersion));
+    assert(strlen(kProjectRevision));
+    assert(strlen(kProjectCompiler));
+    assert(strlen(kProjectCompilerVersion));
 
     // Log the version strings
-    printf("%s %s-%s (%s-%s)\n", PROJECT_NAME, PROJECT_VERSION, PROJECT_REVISION, PROJECT_COMPILER, PROJECT_COMPILER_VERSION);
+    printf("%s %s-%s (%s-%s)\n", kProjectName, kProjectVersion, kProjectRevision, kProjectCompiler, kProjectCompilerVersion);
 
     return 0;
 }

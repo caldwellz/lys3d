@@ -8,8 +8,8 @@
 * can obtain one at http://mozilla.org/MPL/2.0/.   *
 ***************************************************/
 
-#ifndef _CONFIG_H_
-#define _CONFIG_H_
+#ifndef LYS3D_CONFIG_H_
+#define LYS3D_CONFIG_H_
 
 #mesondefine LYS3D_BUILD_SHARED
 #mesondefine LYS3D_USE_EXCEPTIONS
@@ -23,14 +23,14 @@
         #define LYS_API __attribute__ ((dllexport))
       #else
         #define LYS_API __declspec(dllexport)
-      #endif //__GNUC__
+      #endif // __GNUC__
     #else
       #ifdef __GNUC__
         #define LYS_API __attribute__ ((dllimport))
       #else
         #define LYS_API __declspec(dllimport)
-      #endif //__GNUC__
-    #endif //BUILDING_ENGINE
+      #endif // __GNUC__
+    #endif // BUILDING_ENGINE
     #define LYS_LOCAL
   #else
     #if __GNUC__ >= 4
@@ -44,6 +44,7 @@
 #else
   #define LYS_API
   #define LYS_LOCAL
-#endif //BUILD_SHARED
+#endif // BUILD_SHARED
 
-#endif //_CONFIG_H_
+#endif // LYS3D_CONFIG_H_
+

@@ -8,23 +8,25 @@
 * can obtain one at http://mozilla.org/MPL/2.0/.   *
 ***************************************************/
 
-#ifndef _VERSION_H_
-#define _VERSION_H_
+#ifndef LYS3D_VERSION_H_
+#define LYS3D_VERSION_H_
 
 #include <config.h>
 
 #ifdef __cplusplus
+namespace lys3d {
 extern "C" {
 #endif //__cplusplus
 
-extern LYS_API const char* PROJECT_NAME;
-extern LYS_API const char* PROJECT_VERSION;
-extern LYS_API const char* PROJECT_REVISION;
-extern LYS_API const char* PROJECT_COMPILER;
-extern LYS_API const char* PROJECT_COMPILER_VERSION;
+extern LYS_API const char* kProjectName;
+extern LYS_API const char* kProjectVersion;
+extern LYS_API const char* kProjectRevision;
+extern LYS_API const char* kProjectCompiler;
+extern LYS_API const char* kProjectCompilerVersion;
 
 #ifdef __cplusplus
 }
-#endif //__cplusplus
-#endif //_VERSION_H_
+}
+#endif // __cplusplus
+#endif // LYS3D_VERSION_H_
 

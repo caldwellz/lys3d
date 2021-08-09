@@ -10,8 +10,9 @@
 
 #include <version.h>
 
-const char* PROJECT_NAME = "@name@";
-const char* PROJECT_VERSION = "@version@";
-const char* PROJECT_REVISION = "@vcs_tag_placeholder@";
-const char* PROJECT_COMPILER = "@compiler@";
-const char* PROJECT_COMPILER_VERSION = "@compiler_version@";
+const char* kProjectName = "@name@";
+const char* kProjectVersion = "@version@";
+const char* kProjectRevision = "@vcs_tag_placeholder@";
+const char* kProjectCompiler = "@compiler@";
+const char* kProjectCompilerVersion = "@compiler_version@";
+
