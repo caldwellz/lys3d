@@ -1,1 +1,1 @@
-option('BUILD_TESTS', type : 'boolean', value : true)
+option('LYS_BUILD_TESTS', type : 'boolean', value : true)

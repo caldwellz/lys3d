@@ -1,6 +1,6 @@
 /***************************************************
 * version.h: Project version / revision            *
-* Copyright (C)                                    *
+* Copyright (C) 2021 Zach Caldwell                 *
 ****************************************************
 * This Source Code Form is subject to the terms of *
 * the Mozilla Public License, v. 2.0. If a copy of *
@@ -17,13 +17,14 @@
 extern "C" {
 #endif //__cplusplus
 
-extern DLL_PUBLIC const char* PROJECT_NAME;
-extern DLL_PUBLIC const char* PROJECT_VERSION;
-extern DLL_PUBLIC const char* PROJECT_REVISION;
-extern DLL_PUBLIC const char* PROJECT_COMPILER;
-extern DLL_PUBLIC const char* PROJECT_COMPILER_VERSION;
+extern LYS_API const char* PROJECT_NAME;
+extern LYS_API const char* PROJECT_VERSION;
+extern LYS_API const char* PROJECT_REVISION;
+extern LYS_API const char* PROJECT_COMPILER;
+extern LYS_API const char* PROJECT_COMPILER_VERSION;
 
 #ifdef __cplusplus
 }
 #endif //__cplusplus
 #endif //_VERSION_H_
+

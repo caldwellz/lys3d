@@ -1,6 +1,6 @@
 /***************************************************
 * Test - Project version / revision                *
-* Copyright (C)                                    *
+* Copyright (C) 2021 Zach Caldwell                 *
 ****************************************************
 * This Source Code Form is subject to the terms of *
 * the Mozilla Public License, v. 2.0. If a copy of *
@@ -9,20 +9,21 @@
 ***************************************************/
 
 #include <version.h>
+
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
 
 int main(void)
 {
-    // Verify pointers not null
+    // Verify pointers are not null
     assert(PROJECT_NAME);
     assert(PROJECT_VERSION);
     assert(PROJECT_REVISION);
     assert(PROJECT_COMPILER);
     assert(PROJECT_COMPILER_VERSION);
 
-    // Verify contents not null
+    // Verify contents are not empty
     assert(strlen(PROJECT_NAME));
     assert(strlen(PROJECT_VERSION));
     assert(strlen(PROJECT_REVISION));
@@ -30,7 +31,8 @@ int main(void)
     assert(strlen(PROJECT_COMPILER_VERSION));
 
     // Log the version strings
-    printf("%s %s-%s (%s-%s)", PROJECT_NAME, PROJECT_VERSION, PROJECT_REVISION, PROJECT_COMPILER, PROJECT_COMPILER_VERSION);
+    printf("%s %s-%s (%s-%s)\n", PROJECT_NAME, PROJECT_VERSION, PROJECT_REVISION, PROJECT_COMPILER, PROJECT_COMPILER_VERSION);
 
     return 0;
 }
+
