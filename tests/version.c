@@ -14,8 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(void)
-{
+int main(void) {
     // Verify pointers are not null
     assert(kProjectName);
     assert(kProjectVersion);

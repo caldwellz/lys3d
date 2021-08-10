@@ -1,1 +1,3 @@
-option('LYS_BUILD_TESTS', type : 'boolean', value : true)
+option('LYS3D_BUILD_TESTS', type : 'boolean', value : true)
+option('LYS3D_USE_STL', type : 'boolean', value : true)
+

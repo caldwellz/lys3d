@@ -6,6 +6,7 @@ conf_data = configuration_data()
 conf_data.set('LYS3D_BUILD_SHARED', get_option('default_library').contains('shared'))
 conf_data.set('LYS3D_USE_EXCEPTIONS', not get_option('cpp_eh').contains('none'))
 conf_data.set('LYS3D_USE_RTTI', get_option('cpp_rtti'))
+conf_data.set('LYS3D_USE_STL', get_option('LYS3D_USE_STL'))
 conffile = configure_file(configuration : conf_data,
     input : 'config.h.in',
     output : 'config.h')

@@ -20,12 +20,11 @@ dep_physfs = dependency('physfs', required : false)
 if not dep_physfs.found()
     dep_physfs = cppcomp.find_library('physfs', has_headers : ['physfs.h'])
 endif
-engine_deps = [dep_sdl, dep_sdlimage, dep_physfs]
+lib_deps = [dep_sdl, dep_sdlimage, dep_physfs]
 
 
-# List sources and dependencies - version file comes later
+# List sources - version file comes later
 lib_srcs = files([])
-lib_deps = []
 
 
 # These arguments are only used to build the library
@@ -66,3 +65,4 @@ pkg_mod.generate(
   libraries : lib_target,
   version : meson.project_version()
 )
+

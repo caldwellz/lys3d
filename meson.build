@@ -14,6 +14,7 @@ endif
 # Run subdirectory scripts
 subdir('include')
 subdir('src')
-if get_option('LYS_BUILD_TESTS')
+if get_option('LYS3D_BUILD_TESTS')
   subdir('tests')
 endif
+

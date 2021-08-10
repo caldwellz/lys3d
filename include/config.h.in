@@ -1,5 +1,5 @@
 /***************************************************
-* config.h: Build-time configuration               *
+* config.h: Build-time configuration & portability *
 * Copyright (C) 2021 Zach Caldwell                 *
 ****************************************************
 * This Source Code Form is subject to the terms of *
@@ -11,40 +11,41 @@
 #ifndef LYS3D_CONFIG_H_
 #define LYS3D_CONFIG_H_
 
+// Compile-time definitions provided by the build system
 #mesondefine LYS3D_BUILD_SHARED
 #mesondefine LYS3D_USE_EXCEPTIONS
 #mesondefine LYS3D_USE_RTTI
+#mesondefine LYS3D_USE_STL
 
 #ifdef LYS3D_BUILD_SHARED
-  // From https://gcc.gnu.org/wiki/Visibility
-  #if defined _WIN32 || defined __CYGWIN__
-    #ifdef BUILDING_LYS3D
-      #ifdef __GNUC__
-        #define LYS_API __attribute__ ((dllexport))
-      #else
-        #define LYS_API __declspec(dllexport)
-      #endif // __GNUC__
+    // From https://gcc.gnu.org/wiki/Visibility
+    #if defined _WIN32 || defined __CYGWIN__
+        #define LYS_LOCAL 
+        #ifdef BUILDING_LYS3D
+            #ifdef __GNUC__
+                #define LYS_API __attribute__ ((dllexport))
+            #else
+                #define LYS_API __declspec(dllexport)
+            #endif // __GNUC__
+        #else
+            #ifdef __GNUC__
+                #define LYS_API __attribute__ ((dllimport))
+            #else
+                #define LYS_API __declspec(dllimport)
+            #endif // __GNUC__
+        #endif // BUILDING_LYS3D
     #else
-      #ifdef __GNUC__
-        #define LYS_API __attribute__ ((dllimport))
-      #else
-        #define LYS_API __declspec(dllimport)
-      #endif // __GNUC__
-    #endif // BUILDING_ENGINE
-    #define LYS_LOCAL
-  #else
-    #if __GNUC__ >= 4
-      #define LYS_API __attribute__ ((visibility ("default")))
-      #define LYS_LOCAL  __attribute__ ((visibility ("hidden")))
-    #else
-      #define LYS_API
-      #define LYS_LOCAL
-    #endif
-  #endif
+        #if __GNUC__ >= 4
+            #define LYS_API __attribute__ ((visibility ("default")))
+            #define LYS_LOCAL  __attribute__ ((visibility ("hidden")))
+        #else
+            #define LYS_API 
+            #define LYS_LOCAL 
+        #endif
+    #endif // defined _WIN32 || defined __CYGWIN__
 #else
-  #define LYS_API
-  #define LYS_LOCAL
-#endif // BUILD_SHARED
-
+    #define LYS_API
+    #define LYS_LOCAL
+#endif // LYS3D_BUILD_SHARED
 #endif // LYS3D_CONFIG_H_
 
