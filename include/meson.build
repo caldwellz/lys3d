@@ -13,9 +13,9 @@ conffile = configure_file(configuration : conf_data,
 
 lib_headers = [
     conffile
+  , 'types.h'
   , 'version.h']
 
 # Install headers - add others to lib_headers above
 base_include_subdir = meson.project_name()
 install_headers(lib_headers, subdir : meson.project_name())
-
