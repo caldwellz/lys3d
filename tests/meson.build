@@ -1,7 +1,8 @@
 # Tests list
 tests = [
     ['version', '.c']
-  , ['Dimension2D', '.cc']]
+  , ['Dimension2D', '.cc']
+  , ['Point2D', '.cc']]
 
 
 # Test dependencies
