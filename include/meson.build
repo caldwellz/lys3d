@@ -14,7 +14,8 @@ conffile = configure_file(configuration : conf_data,
 lib_headers = [
     conffile
   , 'types.h'
-  , 'version.h']
+  , 'version.h'
+  , 'Dimension2D.h']
 
 # Install headers - add others to lib_headers above
 base_include_subdir = meson.project_name()

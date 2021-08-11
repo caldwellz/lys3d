@@ -1,6 +1,7 @@
 # Tests list
 tests = [
-    ['version', '.c']]
+    ['version', '.c']
+  , ['Dimension2D', '.cc']]
 
 
 # Test dependencies
