@@ -2,7 +2,9 @@
 tests = [
     ['version', '.c']
   , ['Dimension2D', '.cc']
-  , ['Point2D', '.cc']]
+  , ['Point2D', '.cc']
+  , ['WindowGLES2', '.cc']
+]
 
 
 # Test dependencies
@@ -19,4 +21,3 @@ foreach t : tests
     exe = executable(t[0], t[0] + t[1], dependencies : test_deps, link_with : lib_target, include_directories : lib_incdir)
     test(t[0], exe)
 endforeach
-

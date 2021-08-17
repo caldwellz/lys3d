@@ -24,7 +24,9 @@ lib_deps = [dep_sdl, dep_sdlimage, dep_physfs]
 
 
 # List sources - version file comes later
-lib_srcs = files([])
+lib_srcs = files([
+   'WindowGLES2.cc'
+])
 
 
 # These arguments are only used to build the library
@@ -65,4 +67,3 @@ pkg_mod.generate(
   libraries : lib_target,
   version : meson.project_version()
 )
-

@@ -16,7 +16,10 @@ lib_headers = [
   , 'types.h'
   , 'version.h'
   , 'Dimension2D.h'
-  , 'Point2D.h']
+  , 'IWindow.h'
+  , 'Point2D.h'
+  , 'WindowGLES2.h'
+]
 
 # Install headers - add others to lib_headers above
 base_include_subdir = meson.project_name()
