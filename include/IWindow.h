@@ -49,6 +49,13 @@ class IWindow {
     /** Close/destroy the window, but keep the settings. */
     virtual void close() = 0;
 
+    /** Activate the window.
+     * Brings it into focus and makes it the "current" window for any \
+     * subsequent rendering.
+     * \returns True if the window was activated successfully, false otherwise.
+     */
+    virtual bool activate() = 0;
+
     /** Update the window.
      * Swaps buffers, processes window events, etc.
      * \returns True if the update succeeded and the window was not closed \

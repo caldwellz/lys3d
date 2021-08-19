@@ -21,7 +21,7 @@ int main(void) {
     assert(SDL_Init(SDL_INIT_VIDEO) == 0);
     lys3d::WindowGLES2 window;
     window.useFullscreen(false, false);
-    printf("- Window: Opening\n");
+    printf("- Window: Opening 1st window\n");
     assert(window.open() && window.isOpen());
     assert(window.update());
     assert(!window.isFullscreen());
@@ -115,8 +115,31 @@ int main(void) {
     printf("Size after change: %ix%i\n", size.width(), size.height());
     assert(size.width() == 640 && size.height() == 480);
 
+    // Changing back to windowed mode again
+    printf("- Window: Changing back to windowed mode again\n");
+    assert(window.useFullscreen(false, false));
+    assert(window.update());
+    size = window.size();
+    printf("Size after change: %ix%i\n", size.width(), size.height());
+    assert(size.width() == 640 && size.height() == 480);
+
+    // Create a second window
+    printf("- Window: Opening 2nd window\n");
+    lys3d::WindowGLES2 window2;
+    window2.useFullscreen(false, false);
+    assert(window2.open() && window2.isOpen());
+    assert(window2.update());
+    assert(!window2.isFullscreen());
+
+    // Activate and update each window
+    assert(window.activate());
+    assert(window.update());
+    assert(window2.activate());
+    assert(window2.update());
+
     // Clean up
     window.close();
+    window2.close();
     SDL_Quit();
 
     return 0;

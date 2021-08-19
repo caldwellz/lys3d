@@ -84,8 +84,8 @@ LYS_API bool WindowGLES2::open() {
         }
     }
 
+    // Try again with a regular OpenGL 2.0 core profile if needed
     if (!pimpl_->window || !pimpl_->context) {
-        // Try again with a regular OpenGL 2.0 core profile
         SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
         pimpl_->window = SDL_CreateWindow(pimpl_->title.c_str(), pimpl_->position.x(),
                                           pimpl_->position.y(), pimpl_->size.width(),
@@ -102,11 +102,11 @@ LYS_API bool WindowGLES2::open() {
     }
 
     // Some platforms may not support enabling (or disabling) VSync, so ignore any errors.
-    // The host app can call enableVSync() again itself if it wants more details.
+    // The host app can call useVSync() again itself if it wants more details.
     if (!useVSync(pimpl_->wantVSync))
         SDL_ClearError();
 
-    return true;
+    return activate();
 }
 
 
@@ -123,9 +123,34 @@ LYS_API void WindowGLES2::close() {
 }
 
 
+LYS_API bool WindowGLES2::activate() {
+    if (pimpl_->context == nullptr)
+        return false;
+
+    if (SDL_GL_MakeCurrent(pimpl_->window, pimpl_->context) != 0)
+        return false;
+
+    // Bring the window to the front and focus the input
+    SDL_RaiseWindow(pimpl_->window);
+
+    // Full input grab may not always be desirable because the mouse gets
+    // confined to the window. So, only grab the input if it's already
+    // grabbed somewhere, and not by the current window.
+    SDL_Window* grabbed = SDL_GetGrabbedWindow();
+    if (grabbed != nullptr && grabbed != pimpl_->window)
+        SDL_SetWindowGrab(pimpl_->window, SDL_TRUE);
+
+    return true;
+}
+
+
 LYS_API bool WindowGLES2::update() {
     if (pimpl_->context == nullptr)
         return false;
+
+    // Bail here if this is not the active window
+    if (SDL_GL_GetCurrentWindow() != pimpl_->window)
+        return true;
 
     // TODO: Handle SDL window events
 

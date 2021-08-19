@@ -32,6 +32,7 @@ class LYS_API WindowGLES2 : public IWindow {
     bool isOpen() const;
     bool open();
     void close();
+    bool activate();
     bool update();
     String title() const;
     void title(const String new_title);
