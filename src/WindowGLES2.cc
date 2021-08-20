@@ -10,6 +10,7 @@
 
 #include "WindowGLES2.h"
 
+#include "GLES2/gl2.h"
 #include <SDL2/SDL_video.h>
 
 #include "config.h"
@@ -130,6 +131,10 @@ LYS_API bool WindowGLES2::activate() {
     if (SDL_GL_MakeCurrent(pimpl_->window, pimpl_->context) != 0)
         return false;
 
+    // OpenGL function pointers are context-dependent on some platforms, so
+    // reload them now that the current context has (potentially) been changed.
+    resetGLPointers();
+
     // Bring the window to the front and focus the input
     SDL_RaiseWindow(pimpl_->window);
 
@@ -155,6 +160,10 @@ LYS_API bool WindowGLES2::update() {
     // TODO: Handle SDL window events
 
     SDL_GL_SwapWindow(pimpl_->window);
+
+    // Ideally the visible color buffer should be entirely overwritten by new
+    // drawings every frame, so only clear the OTHER buffers.
+    glClear(GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
     return true;
 }

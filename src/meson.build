@@ -25,7 +25,8 @@ lib_deps = [dep_sdl, dep_sdlimage, dep_physfs]
 
 # List sources - version file comes later
 lib_srcs = files([
-   'WindowGLES2.cc'
+    'GLES2/gl2.c'
+  , 'WindowGLES2.cc'
 ])
 
 
